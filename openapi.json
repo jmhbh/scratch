@@ -1,0 +1,194 @@
+{
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "contact": {},
+    "license": {
+      "name": ""
+    },
+    "title": "Stitched schema for ApiProduct: productpage-api-product",
+    "version": "v1"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/bookinfo/v2/authors/{olid}.json": {
+      "get": {
+        "operationId": "read_authors_authors__olid__json_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "olid",
+            "required": true,
+            "schema": {
+              "title": "Olid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Read Authors",
+        "tags": [
+          "authors"
+        ]
+      }
+    },
+    "/api/bookinfo/v2/authors/{olid}/works.json": {
+      "get": {
+        "operationId": "read_authors_works_authors__olid__works_json_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "olid",
+            "required": true,
+            "schema": {
+              "title": "Olid"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Read Authors Works",
+        "tags": [
+          "authors"
+        ]
+      }
+    },
+    "/api/bookinfo/v2/search.json": {
+      "get": {
+        "operationId": "read_search_json_search_json_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "required": true,
+            "schema": {
+              "title": "Q"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "title": "Page",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Read Search Json",
+        "tags": [
+          "search"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://openlibrary.org:8080"
+    }
+  ]
+}
